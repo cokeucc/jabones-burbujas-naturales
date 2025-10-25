@@ -25,7 +25,7 @@ export default function Hero() {
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  const images = ["/1.jpg", "/avena.png", "/menta.png", "/4.jpg", "/5.jpg"];
+  const images = ["/1.jpg", "/12.webp", "/6.jpg", "/14.webp", "/9.webp"];
 
   return (
     <section
@@ -69,13 +69,15 @@ export default function Hero() {
               key={i}
               src={src}
               alt="Jabón artesanal"
+              loading="lazy" // ⚡ Carga diferida
+              decoding="async" // ⚙️ Decodificación asíncrona
               className="w-[16rem] md:w-[20rem] h-[12rem] md:h-[18rem] object-cover rounded-xl shadow-sm flex-shrink-0"
               draggable="false"
             />
           ))}
         </div>
 
-        {/* suaves degradados laterales para que el carrusel no "corte" visualmente */}
+        {/* degradados laterales para suavizar el corte visual */}
         <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-pink-50 to-transparent" />
         <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-pink-50 to-transparent" />
       </div>

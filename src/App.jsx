@@ -83,19 +83,46 @@ function App() {
 
   const currentSEO = seoData[categoriaSeleccionada] || seoData.Todos;
 
-  // 🧴 Productos
+  // ✨ Productos destacados (independientes)
+  const productosDestacados = [
+    { id: "d1", nombre: "Jabón de Lavanda Premium", precio: 5200, imagen: "/11.webp" },
+    { id: "d2", nombre: "Jabón de Coco Natural", precio: 4800, imagen: "/12.webp" },
+    { id: "d3", nombre: "Jabón de Menta Refrescante", precio: 4900, imagen: "/13.webp" },
+    { id: "d4", nombre: "Jabón de Rosa Mosqueta Deluxe", precio: 5500, imagen: "/14.webp" },
+  ];
+
+  // 🧴 Productos por categorías
   const productos = [
-    { id: 1, nombre: "Jabón de Lavanda", precio: 4500, imagen: "/lavanda.png", categoria: "Matrimonio" },
-    { id: 2, nombre: "Jabón de Avena", precio: 4000, imagen: "/avena.png", categoria: "Matrimonio" },
-    { id: 3, nombre: "Jabón de Menta", precio: 4200, imagen: "/menta.png", categoria: "Despedida Soltera" },
-    { id: 4, nombre: "Jabón de Coco", precio: 4300, imagen: "/1.jpg", categoria: "Baby Shower" },
-    { id: 5, nombre: "Jabón de Rosa Mosqueta", precio: 4700, imagen: "/2.jpg", categoria: "Despedida Soltera" },
-    { id: 6, nombre: "Jabón de Almendra", precio: 4100, imagen: "/3.jpg", categoria: "Bautizo" },
-    { id: 7, nombre: "Jabón de Miel", precio: 4400, imagen: "/4.jpg", categoria: "Matrimonio" },
-    { id: 8, nombre: "Jabón de Naranja", precio: 4200, imagen: "/5.jpg", categoria: "Baby Shower" },
-    { id: 9, nombre: "Jabón de Café", precio: 4600, imagen: "/6.jpg", categoria: "Bautizo" },
-    { id: 10, nombre: "Jabón Especial", precio: 4800, imagen: "/7.jpg", categoria: "Cumpleaños" },
-    { id: 11, nombre: "Jabón Premium", precio: 5200, imagen: "/8.jpg", categoria: "Graduacion" },
+    { id: 1, nombre: "Jabón de Lavanda", precio: 4500, imagen: "/16.webp", categoria: "Matrimonio" },
+    { id: 2, nombre: "Jabón de Avena", precio: 4000, imagen: "/16.webp", categoria: "Matrimonio" },
+    { id: 3, nombre: "Jabón de Menta", precio: 4200, imagen: "/16.webp", categoria: "Matrimonio" },
+    { id: 4, nombre: "Jabón de Coco", precio: 4300, imagen: "/1.jpg", categoria: "Matrimonio" },
+    { id: 5, nombre: "Jabón de Rosa Mosqueta", precio: 4700, imagen: "/2.jpg", categoria: "Matrimonio" },
+    { id: 6, nombre: "Jabón de Almendra", precio: 4100, imagen: "/3.jpg", categoria: "Despedida Soltera" },
+    { id: 7, nombre: "Jabón de Miel", precio: 4400, imagen: "/4.jpg", categoria: "Despedida Soltera" },
+    { id: 8, nombre: "Jabón de Naranja", precio: 4200, imagen: "/5.jpg", categoria: "Despedida Soltera" },
+    { id: 9, nombre: "Jabón de Café", precio: 4600, imagen: "/6.jpg", categoria: "Despedida Soltera" },
+    { id: 10, nombre: "Jabón Especial", precio: 4800, imagen: "/7.jpg", categoria: "Despedida Soltera" },
+    { id: 11, nombre: "Jabón Premium", precio: 5200, imagen: "/8.jpg", categoria: "Baby Shower" },
+    { id: 12, nombre: "Jabón de Lavanda", precio: 4500, imagen: "/16.webp", categoria: "Baby Shower" },
+    { id: 13, nombre: "Jabón de Avena", precio: 4000, imagen: "/16.webp", categoria: "Baby Shower" },
+    { id: 14, nombre: "Jabón de Menta", precio: 4200, imagen: "/12.webp", categoria: "Baby Shower" },
+    { id: 15, nombre: "Jabón de Coco", precio: 4300, imagen: "/1.jpg", categoria: "Baby Shower" },
+    { id: 16, nombre: "Jabón de Rosa Mosqueta", precio: 4700, imagen: "/2.jpg", categoria: "Bautizo" },
+    { id: 17, nombre: "Jabón de Almendra", precio: 4100, imagen: "/3.jpg", categoria: "Bautizo" },
+    { id: 18, nombre: "Jabón de Miel", precio: 4400, imagen: "/4.jpg", categoria: "Bautizo" },
+    { id: 19, nombre: "Jabón de Naranja", precio: 4200, imagen: "/5.jpg", categoria: "Bautizo" },
+    { id: 20, nombre: "Jabón de Café", precio: 4600, imagen: "/6.jpg", categoria: "Bautizo" },
+    { id: 21, nombre: "Jabón Especial", precio: 4800, imagen: "/7.jpg", categoria: "Cumpleaños" },
+    { id: 22, nombre: "Jabón Premium", precio: 5200, imagen: "/8.jpg", categoria: "Cumpleaños" },
+    { id: 23, nombre: "Jabón de Lavanda", precio: 4500, imagen: "/16.webp", categoria: "Cumpleaños" },
+    { id: 24, nombre: "Jabón de Avena", precio: 4000, imagen: "/16.webp", categoria: "Cumpleaños" },
+    { id: 25, nombre: "Jabón de Menta", precio: 4200, imagen: "/12.webp", categoria: "Cumpleaños" },
+    { id: 26, nombre: "Jabón de Coco", precio: 4300, imagen: "/1.jpg", categoria: "Graduacion" },
+    { id: 27, nombre: "Jabón de Rosa Mosqueta", precio: 4700, imagen: "/2.jpg", categoria: "Graduacion" },
+    { id: 28, nombre: "Jabón de Almendra", precio: 4100, imagen: "/3.jpg", categoria: "Graduacion" },
+    { id: 29, nombre: "Jabón de Miel", precio: 4400, imagen: "/4.jpg", categoria: "Graduacion" },
+    { id: 30, nombre: "Jabón de Naranja", precio: 4200, imagen: "/5.jpg", categoria: "Graduacion" },
   ];
 
   const categorias = [
@@ -113,32 +140,23 @@ function App() {
       ? productos
       : productos.filter((p) => p.categoria === categoriaSeleccionada);
 
-  // 🧠 Preguntas Frecuentes
+  // ❓ Preguntas Frecuentes
   const faqData = [
-    {
-      pregunta: "¿De qué están hechos sus jabones?",
-      respuesta:
-        "Nuestros jabones son artesanales, elaborados con aceites saponificados de coco y oliva, manteca natural, extractos botánicos y aceites esenciales. No contienen sulfatos ni parabenos.",
+    { pregunta: "¿Cómo hago mi pedido y cuál es el proceso de pago?", 
+      respuesta: "El proceso es simple: elige tus productos y añádelos al carrito. Al finalizar, la solicitud nos llega directamente por WhatsApp. En ese momento, coordinaremos contigo los detalles del pedido, el total y el envío, y te enviaremos los datos para el depósito o transferencia electrónica para concretar la venta. La fabricación y preparación de tu pedido inicia una vez que se confirma el pago. Te notificaremos cuando tu pedido esté listo para ser entregado a Starken.", 
+    }, 
+    { pregunta: "¿Con cuánto tiempo de anticipación debo encargar recuerdos personalizados?", 
+      respuesta: "Para garantizar la calidad y el diseño, recomendamos contactar con un mínimo de 3 a 4 semanas de anticipación antes de la fecha de tu evento. La fabricación comienza una vez confirmado el depósito.", 
+    }, 
+    { pregunta: "¿Tienen tienda física y entregan de forma presencial?",
+      respuesta: "No, somos una tienda 100% online de la Region Metropolitana,no contamos con punto de venta ni realizamos entregas presenciales", 
     },
-    {
-      pregunta: "¿Realizan envíos a todo Chile?",
-      respuesta:
-        "Sí, realizamos envíos a todo Chile a través de Correos de Chile o Chilexpress. El costo y el tiempo de envío se calculan en el carrito de compras.",
-    },
-    {
-      pregunta:
-        "¿Ofrecen pedidos personalizados para eventos (matrimonios, bautizos)?",
-      respuesta:
-        "¡Por supuesto! Nos especializamos en recuerdos personalizados para eventos. Contáctanos por WhatsApp con al menos 3 semanas de anticipación.",
-    },
-    {
-      pregunta: "¿Cuál es su política de cambios y devoluciones?",
-      respuesta:
-        "Aceptamos devoluciones solo en caso de productos dañados durante el envío, reportados dentro de las 48 horas siguientes. Los personalizados no son elegibles para devolución.",
+    { pregunta: "¿Realizan envíos a todo Chile?", 
+      respuesta: "Sí, ¡enviamos a todo Chile! Utilizamos Starken como nuestro principal socio logístico. El costo del envío no está incluido en el valor de tu pedido. Una vez que tu pedido ha sido fabricado y entregado en la sucursal de Starken, ellos determinan el costo y los plazos de entrega, según tu dirección.", 
     },
   ];
 
-  // 🧼 Componente Carrusel
+  // 🧼 Carrusel
   const Carrusel = ({ titulo, data, referencia }) => (
     <section className="relative pb-12 bg-rose-50">
       <h2
@@ -185,7 +203,7 @@ function App() {
     </section>
   );
 
-  // 🔍 Datos estructurados JSON-LD para negocio y productos
+  // 🔍 Datos estructurados JSON-LD
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Store",
@@ -194,10 +212,6 @@ function App() {
       "Jabones artesanales y recuerdos personalizados para matrimonio, baby shower, bautizo, graduación y más.",
     url: "https://www.jabonesburbujasnaturales.cl",
     logo: "https://www.jabonesburbujasnaturales.cl/logo.png",
-    sameAs: [
-      "https://www.instagram.com/jabonesburbujasnaturales",
-      "https://www.facebook.com/jabonesburbujasnaturales",
-    ],
     makesOffer: productos.map((p) => ({
       "@type": "Offer",
       itemOffered: {
@@ -225,8 +239,6 @@ function App() {
         <meta property="og:description" content={currentSEO.description} />
         <meta property="og:image" content="/logo.png" />
         <meta property="og:url" content="https://www.jabonesburbujasnaturales.cl" />
-
-        {/* 📦 Datos estructurados para SEO */}
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
@@ -239,7 +251,7 @@ function App() {
       <section id="productos" className="scroll-mt-28">
         <Carrusel
           titulo="✨ Productos Destacados ✨"
-          data={productos.slice(0, 8)}
+          data={productosDestacados}
           referencia={destacadosRef}
         />
       </section>
